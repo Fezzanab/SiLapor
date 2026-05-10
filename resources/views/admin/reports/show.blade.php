@@ -76,13 +76,30 @@
                 @csrf
                 <div>
                     <label class="block font-bold mb-1" for="status">Ubah Status</label>
-                    <select name="status" id="status" required class="neu-input w-full">
+                    <select name="status" id="status" required class="neu-input w-full" onchange="toggleScores(this.value)">
                         <option value="">-- Pilih Status --</option>
                         <option value="valid">Valid (Terima)</option>
                         <option value="invalid">Invalid (Tolak)</option>
                         <option value="duplicate">Duplikat</option>
                     </select>
                 </div>
+
+                <div id="score-fields" style="display: none;" class="space-y-4 p-4 bg-gray-50 border-2 border-neu-border rounded-lg">
+                    <h4 class="font-bold text-sm border-b border-neu-border pb-1">Penilaian Kriteria (1-5)</h4>
+                    <div>
+                        <label class="block font-bold text-xs mb-1" for="severity_score">C1: Keparahan</label>
+                        <input type="number" name="severity_score" id="severity_score" min="1" max="5" class="neu-input w-full text-sm">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xs mb-1" for="academic_impact_score">C2: Dampak Akademik</label>
+                        <input type="number" name="academic_impact_score" id="academic_impact_score" min="1" max="5" class="neu-input w-full text-sm">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xs mb-1" for="estimated_cost_score">C4: Estimasi Biaya</label>
+                        <input type="number" name="estimated_cost_score" id="estimated_cost_score" min="1" max="5" class="neu-input w-full text-sm">
+                    </div>
+                </div>
+
                 <div>
                     <label class="block font-bold mb-1" for="admin_note">Catatan Admin</label>
                     <textarea name="admin_note" id="admin_note" rows="3" class="neu-input w-full" placeholder="Tambahkan catatan mengapa diterima/ditolak..."></textarea>
@@ -90,6 +107,20 @@
                 <button type="submit" class="neu-btn-primary w-full">Simpan Verifikasi</button>
             </form>
         </div>
+
+        <script>
+            function toggleScores(status) {
+                const scoreFields = document.getElementById('score-fields');
+                const inputs = scoreFields.querySelectorAll('input');
+                if (status === 'valid') {
+                    scoreFields.style.display = 'block';
+                    inputs.forEach(input => input.setAttribute('required', 'required'));
+                } else {
+                    scoreFields.style.display = 'none';
+                    inputs.forEach(input => input.removeAttribute('required'));
+                }
+            }
+        </script>
         @endif
 
         <!-- Assign Task Form -->

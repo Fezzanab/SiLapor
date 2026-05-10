@@ -46,9 +46,6 @@ class PelaporController extends Controller
             'description' => 'required|string',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
-            'severity_score' => 'required|integer|min:1|max:5',
-            'academic_impact_score' => 'required|integer|min:1|max:5',
-            'estimated_cost_score' => 'required|integer|min:1|max:5',
             'photo' => 'nullable|image|max:2048'
         ]);
 
@@ -68,9 +65,6 @@ class PelaporController extends Controller
             'description' => $validated['description'],
             'latitude' => $validated['latitude'],
             'longitude' => $validated['longitude'],
-            'severity_score' => $validated['severity_score'],
-            'academic_impact_score' => $validated['academic_impact_score'],
-            'estimated_cost_score' => $validated['estimated_cost_score'],
             'photo' => $photoPath,
             'status' => 'pending'
         ]);

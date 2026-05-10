@@ -66,25 +66,7 @@
             <input type="file" id="photo" name="photo" accept="image/*" class="neu-input w-full bg-white p-1">
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-gray-50 p-4 border-2 border-neu-border rounded-lg">
-                <label class="block font-bold mb-1" for="severity_score">Tingkat Keparahan (1-5)</label>
-                <p class="text-xs text-gray-600 mb-2">1: Sangat Ringan, 5: Sangat Parah</p>
-                <input type="number" id="severity_score" name="severity_score" min="1" max="5" value="1" required class="neu-input w-full">
-            </div>
-            
-            <div class="bg-gray-50 p-4 border-2 border-neu-border rounded-lg">
-                <label class="block font-bold mb-1" for="academic_impact_score">Dampak Akademik (1-5)</label>
-                <p class="text-xs text-gray-600 mb-2">1: Tidak Mengganggu, 5: Sangat Mengganggu</p>
-                <input type="number" id="academic_impact_score" name="academic_impact_score" min="1" max="5" value="1" required class="neu-input w-full">
-            </div>
 
-            <div class="bg-gray-50 p-4 border-2 border-neu-border rounded-lg">
-                <label class="block font-bold mb-1" for="estimated_cost_score">Estimasi Biaya (1-5)</label>
-                <p class="text-xs text-gray-600 mb-2">1: Sangat Murah, 5: Sangat Mahal</p>
-                <input type="number" id="estimated_cost_score" name="estimated_cost_score" min="1" max="5" value="1" required class="neu-input w-full">
-            </div>
-        </div>
 
         <div>
             <label class="block font-bold mb-2">Pilih Lokasi pada Peta</label>

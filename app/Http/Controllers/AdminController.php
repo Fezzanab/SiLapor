@@ -44,17 +44,28 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'status' => 'required|in:valid,invalid,duplicate',
-            'admin_note' => 'nullable|string'
+            'admin_note' => 'nullable|string',
+            'severity_score' => 'required_if:status,valid|nullable|integer|min:1|max:5',
+            'academic_impact_score' => 'required_if:status,valid|nullable|integer|min:1|max:5',
+            'estimated_cost_score' => 'required_if:status,valid|nullable|integer|min:1|max:5',
         ]);
 
         $oldStatus = $report->status;
         
-        $report->update([
+        $updateData = [
             'status' => $validated['status'],
             'admin_note' => $validated['admin_note'],
             'verified_by' => Auth::id(),
             'verified_at' => now()
-        ]);
+        ];
+
+        if ($validated['status'] === 'valid') {
+            $updateData['severity_score'] = $validated['severity_score'];
+            $updateData['academic_impact_score'] = $validated['academic_impact_score'];
+            $updateData['estimated_cost_score'] = $validated['estimated_cost_score'];
+        }
+        
+        $report->update($updateData);
 
         AuditTrail::create([
             'report_id' => $report->id,
