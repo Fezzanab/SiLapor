@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --color-telkom-red: #ed1c24;
+    --color-telkom-red-dark: #b8161c;
+    --color-telkom-pink: #fde8e8;
+    --color-neu-bg: #fdfdfd;
+    --color-neu-border: #1a1a1a;
+    
+    --shadow-neu: 4px 4px 0px 0px rgba(26, 26, 26, 1);
+    --shadow-neu-hover: 2px 2px 0px 0px rgba(26, 26, 26, 1);
+    
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer utilities {
+    .neu-card {
+        @apply bg-white border-2 border-neu-border rounded-xl shadow-neu transition-all duration-200;
+    }
+    .neu-card:hover {
+        @apply shadow-neu-hover translate-x-[2px] translate-y-[2px];
+    }
+    
+    .neu-btn-primary {
+        @apply bg-telkom-red text-white font-bold py-2 px-4 border-2 border-neu-border rounded-lg shadow-neu transition-all duration-200 active:shadow-none active:translate-x-[4px] active:translate-y-[4px];
+    }
+    .neu-btn-secondary {
+        @apply bg-white text-neu-border font-bold py-2 px-4 border-2 border-neu-border rounded-lg shadow-neu transition-all duration-200 active:shadow-none active:translate-x-[4px] active:translate-y-[4px];
+    }
+    .neu-input {
+        @apply border-2 border-neu-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-telkom-red bg-white;
+    }
+    
+    /* Status Badges */
+    .badge-pending { @apply bg-gray-200 text-gray-800 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+    .badge-valid { @apply bg-blue-300 text-blue-900 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+    .badge-in_progress { @apply bg-yellow-300 text-yellow-900 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+    .badge-completed { @apply bg-green-300 text-green-900 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+    .badge-invalid { @apply bg-red-300 text-red-900 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+    .badge-duplicate { @apply bg-purple-300 text-purple-900 border-2 border-neu-border px-2 py-1 rounded-md text-sm font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]; }
+}
+
+body {
+    background-color: var(--color-neu-bg);
+}
